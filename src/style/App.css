@@ -28,14 +28,15 @@
   height: 110px;
   padding: 10px;
   color: white;
-  min-width: 300px;
+  min-width: 330px;
   max-width: 700px;
 }
 
 .App-header h1 {
-  margin-top: 0;
-  margin-bottom: 2px;
-  font-family: 'Cherry Swash', cursive;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2em;
 }
 
 .App-footer {
@@ -62,15 +63,17 @@
 .subtitle {
   margin-top: 2px;
   font: 1em Courier, monospace;
+  margin-bottom: 20px;
 }
 
 .github {
   text-align: center;
   font-weight: 100;
+
 }
 
 .board {
-  min-width: 600px;
+  min-width: 375px;
   margin: 20px 0;
 }
 
@@ -98,4 +101,20 @@
 .dead {
   /*background-color: rgb(70, 200, 200);*/
   background-color: rgb(230, 230, 230);
+}
+
+.generation-counter {
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 570px) {
+  .App-header h1 {
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 400px) {
+  .App-header h1 {
+    font-size: 1em;
+  }
 }

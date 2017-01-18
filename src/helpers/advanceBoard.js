@@ -26,7 +26,6 @@ for (let i = -1; i < 2; i++) {
       currentCol = 0;
     }
 
-    //console.log(`cell at [${currentRow}][${currentCol}] is ${cells[currentRow][currentCol]}`);
     if (cells[currentRow][currentCol] === true) {
       // cell should not count itself
       if (!(currentRow === row && currentCol === col)) {
@@ -49,25 +48,23 @@ export default function advanceBoard(cells) {
       let currentCell = cells[i][j];
       let cellNeighbors = countNeighbors(cells, i, j);
       // tests whether the current cell is alive or dead
-      switch (currentCell) {
-        // if cell is alive
-        case true:
+      if (currentCell) {
           if (cellNeighbors < 2 || cellNeighbors > 3) {
             row[j] = false;
           } else {
             row[j] = true;
           }
-          break;
 
+      } else {
         // if cell is dead
-        case false:
           if (cellNeighbors === 3) {
             row[j] = true;
           } else {
             row[j] = false;
           }
-          break;
+
       }
+
     }
     newBoardState.push(row);
   }
