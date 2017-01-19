@@ -10,6 +10,7 @@ import advanceBoard from '../helpers/advanceBoard';
 import createBlankBoard from '../helpers/createBlankBoard';
 import Header from './Header';
 import Footer from './Footer';
+import Instructions from './Instructions';
 
 import * as SPEEDS from '../helpers/speed_constants';
 import * as DENSITY from '../helpers/density_constants';
@@ -32,7 +33,8 @@ class App extends Component {
       gameRunning: true,
       boardClear: false,
       gameSpeed: SPEEDS.MEDIUM,
-      mouseIsDown: false
+      mouseIsDown: false,
+      showInstructions: false
     };
   }
 
@@ -189,10 +191,23 @@ class App extends Component {
     });
   }
 
+  handleShowInstructions = () => {
+    this.state.showInstructions
+    ? this.setState({showInstructions: false})
+    : this.setState({showInstructions: true})
+  }
+
   render() {
     return (
       <div className="App">
+        {this.state.showInstructions
+          ? <Instructions handleShowInstructions={this.handleShowInstructions}/>
+          : null}
         <Header />
+
+        <button
+          onClick={this.handleShowInstructions}
+          >Show Instructions</button>
         <ControlPanel
           gameRunning={this.state.gameRunning}
           selectedDensity={this.state.density}

@@ -131,6 +131,42 @@
   vertical-align: middle;
 }
 
+/*.instructions {
+  z-index: 10;
+  position: absolute;
+  height: 100vh;
+  width: 75%;
+  max-width: 300px;
+
+}*/
+
+.instructions-mask {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(150, 150, 150, .9);
+  margin: 0 auto;
+}
+
+.instructions {
+  margin: 30px auto;
+  padding: 10px;
+  width: 80%;
+  color: #000;
+  background-color: #fff;
+  border-radius: 20px;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.instructions ol,
+.instructions ul,
+.instructions p {
+  text-align: left;
+}
+
 @media (max-width: 570px) {
   .App-header {
     height: 50px;
@@ -151,5 +187,8 @@
   .cell {
     width: 5px;
     height: 5px;
+  }
+  .instructions {
+    font-size: .8em;
   }
 }
