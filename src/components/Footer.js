@@ -11,6 +11,9 @@ function Footer() {
           target="_blank"
           href="https://github.com/libeja"><i
             className="fa fa-github" aria-hidden="true"></i></a></small></p>
+
+            <small className='subtitle'>A <a target="_blank" href="https://www.freecodecamp.com/">freeCodeCamp<i
+              className="fa fa-free-code-camp" aria-hidden="true"></i></a> Project</small>
     </div>
   );
 }

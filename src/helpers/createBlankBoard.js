@@ -11,7 +11,6 @@ export default function(rows, cols) {
     }
     blankBoard.push(row);
   }
-
   return blankBoard;
 
 }

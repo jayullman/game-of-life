@@ -23,30 +23,32 @@
 }
 
 .App-header {
-  margin: 0 auto;
-  background-color: #444;
-  height: 110px;
+  margin: 0 auto 35px auto;
+  background-color: #fff;
+  height: 80px;
   padding: 10px;
-  color: white;
-  min-width: 330px;
+  color: #444;
+  min-width: 300px;
   max-width: 700px;
+  box-shadow: 0px 10px 10px -5px rgb(120, 120, 120);
 }
 
 .App-header h1 {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-family: 'Press Start 2P', cursive;
   font-size: 2em;
 }
 
 .App-footer {
-  margin: 10px auto;
-  background-color: #444;
+  margin: 35px auto;
+  background-color: #fff;
   height: 40px;
   padding: 10px;
-  color: white;
+  color: #44;
   min-width: 300px;
   max-width: 700px;
+  box-shadow: 0px -10px 10px -5px rgb(120, 120, 120);
 }
 
 .fcc-title {
@@ -73,8 +75,8 @@
 }
 
 .board {
-  min-width: 375px;
-  margin: 20px 0;
+  margin: 20px auto;
+  white-space: nowrap;
 }
 
 .cell {
@@ -87,7 +89,7 @@
 }
 
 .cell-row {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   /* Remove vertical space around rows */
   line-height: 0px;
@@ -103,18 +105,51 @@
   background-color: rgb(230, 230, 230);
 }
 
+.generation-count-container {
+  display: inline-block;
+  overflow: hidden;
+}
+
 .generation-counter {
-  width: 50px;
-  height: 50px;
+  width: 3.5em;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+  border: 2px solid rgb(70, 70, 70);
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: .8em;
+  color: rgb(220, 40, 40);
+  background-color: #000;
+  display: inline-block;
+  /*overflow: hidden;*/
+}
+
+.generation-counter-label {
+  font-family: 'Orbitron', sans-serif;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @media (max-width: 570px) {
+  .App-header {
+    height: 50px;
+  }
   .App-header h1 {
     font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  .cell {
+    width: 8px;
+    height: 8px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .App-header h1 {
     font-size: 1em;
+  }
+  .cell {
+    width: 5px;
+    height: 5px;
   }
 }

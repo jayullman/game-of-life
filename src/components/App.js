@@ -11,6 +11,11 @@ import createBlankBoard from '../helpers/createBlankBoard';
 import Header from './Header';
 import Footer from './Footer';
 
+import * as SPEEDS from '../helpers/speed_constants';
+import * as DENSITY from '../helpers/density_constants';
+
+// TODO: Add ability to click and drag cells
+// create mousedown state
 
 class App extends Component {
   constructor() {
@@ -21,12 +26,13 @@ class App extends Component {
       rows: 30,
       cols: 30,
       // [0,1] = 0: no life density, 1: max density
-      density: .2,
+      density: DENSITY.MEDIUM_DENSITY,
       cells: [],
       cancelIntervalCode: null,
       gameRunning: true,
       boardClear: false,
-      gameSpeed: 500
+      gameSpeed: SPEEDS.MEDIUM,
+      mouseIsDown: false
     };
   }
 
@@ -56,6 +62,7 @@ class App extends Component {
   }
 
   handleDensityChange = (event) => {
+    console.log(event.target.value);
     this.setState({
       density: event.target.value
     })
@@ -88,37 +95,91 @@ class App extends Component {
     }
   }
 
-  // TODO: create clear board handler
-  // separate createInitialBoard
   handleClearClick = () => {
     this.setState({
       cells: createBlankBoard(this.state.rows, this.state.cols),
       gameRunning: false,
-      boardClear: true
+      boardClear: true,
+      generationCount: 0
     });
     clearInterval(this.state.cancelIntervalCode);
+  }
 
+  handleSpeedChange = (event) => {
+    if (this.state.gameRunning) {
+      this.setState({
+        gameSpeed: event.target.value
+      }, () => {
+        // callback function to be executed once state is set
+        clearInterval(this.state.cancelIntervalCode);
+        this.startBoard();
+      });
+    } else {
+      this.setState({
+        gameSpeed: event.target.value
+      });
+    }
+  }
 
+  // this function will allow a user make a dead cell alive with mouse click
+  handleSelectCell = (event) => {
+    console.log(event.target.id);
+    // get cell position in array
+    const position = event.target.id;
+    const cellRow = Math.floor(position / this.state.cols);
+    const cellCol = position % this.state.cols;
+
+    //create new board to mutate
+    let newBoard = [...this.state.cells];
+    newBoard[cellRow][cellCol] = true;
+
+   this.setState({
+     cells: newBoard,
+     boardClear: false
+   });
+  }
+
+  handleGridSizeChange = (event) => {
+    const gridSize = event.target.value;
+    if (gridSize > 0 && gridSize <= 100) {
+      this.setState({
+        rows: gridSize,
+        cols: gridSize
+      });
+    }
+  }
+
+  handleRestartClick = () => {
+    this.handleClearClick();
+    setTimeout(() => {
+      this.handlePlayPauseClick()}
+      ,800)
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <GenerationCounter generationCount={this.state.generationCount} />
         <ControlPanel
           gameRunning={this.state.gameRunning}
-          density={this.state.density}
+          selectedDensity={this.state.density}
           onDensityChange={this.handleDensityChange}
           onPlayPauseClick={this.handlePlayPauseClick}
           onClearClick={this.handleClearClick}
+          handleSpeedChange={this.handleSpeedChange}
+          selectedSpeed={this.state.gameSpeed}
+          onRestartClick={this.handleRestartClick}
+          gridSize={this.state.cols}
+          handleGridSizeChange={this.handleGridSizeChange}
         />
         <Board
           rows={this.state.rows}
           cols={this.state.cols}
           cells={this.state.cells}
           density={this.state.density}
+          onSelectCell={this.handleSelectCell}
         />
+        <GenerationCounter generationCount={this.state.generationCount} />
         <Footer />
       </div>
     );
