@@ -31,6 +31,7 @@ export default function Board(props) {
       } else {
         row.push(<div
                     onClick={props.onSelectCell}
+                    onMouseOver={props.handleMouseOver}
                     key={i.toString() + j.toString()}
                     id={j + (i * oldCells.length)}
                     className="cell dead">
@@ -41,7 +42,10 @@ export default function Board(props) {
   }
 
   return (
-    <div className="board">
+    <div
+      onMouseDown={props.handleMouseDown}
+      onMouseUp={props.handleMouseUp}
+      className="board">
       {newCellsMapped}
     </div>
   );

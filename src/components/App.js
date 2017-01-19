@@ -121,6 +121,25 @@ class App extends Component {
     }
   }
 
+
+
+  handleGridSizeChange = (event) => {
+    const gridSize = event.target.value;
+    if (gridSize > 0 && gridSize <= 100) {
+      this.setState({
+        rows: gridSize,
+        cols: gridSize
+      });
+    }
+  }
+
+  handleRestartClick = () => {
+    this.handleClearClick();
+    setTimeout(() => {
+      this.handlePlayPauseClick()}
+      ,800)
+  }
+
   // this function will allow a user make a dead cell alive with mouse click
   handleSelectCell = (event) => {
     console.log(event.target.id);
@@ -139,21 +158,35 @@ class App extends Component {
    });
   }
 
-  handleGridSizeChange = (event) => {
-    const gridSize = event.target.value;
-    if (gridSize > 0 && gridSize <= 100) {
-      this.setState({
-        rows: gridSize,
-        cols: gridSize
-      });
+  handleMouseOver = (event) => {
+    if (this.state.mouseIsDown) {
+      // get cell position in array
+      const position = event.target.id;
+      const cellRow = Math.floor(position / this.state.cols);
+      const cellCol = position % this.state.cols;
+
+      //create new board to mutate
+      let newBoard = [...this.state.cells];
+      newBoard[cellRow][cellCol] = true;
+
+     this.setState({
+       cells: newBoard,
+       boardClear: false
+     });
     }
+
   }
 
-  handleRestartClick = () => {
-    this.handleClearClick();
-    setTimeout(() => {
-      this.handlePlayPauseClick()}
-      ,800)
+  handleMouseDown = () => {
+    this.setState({
+      mouseIsDown: true
+    });
+  }
+
+  handleMouseUp = () => {
+    this.setState({
+      mouseIsDown: false
+    });
   }
 
   render() {
@@ -178,6 +211,9 @@ class App extends Component {
           cells={this.state.cells}
           density={this.state.density}
           onSelectCell={this.handleSelectCell}
+          handleMouseOver={this.handleMouseOver}
+          handleMouseUp={this.handleMouseUp}
+          handleMouseDown={this.handleMouseDown}
         />
         <GenerationCounter generationCount={this.state.generationCount} />
         <Footer />
