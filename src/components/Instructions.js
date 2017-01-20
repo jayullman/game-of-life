@@ -43,8 +43,10 @@ export default function(props) {
           <li>Speed: How fast the cells reproduce and die</li>
           <li>Grid Size: Select a size between 10x10 and 70x70</li>
         </ul>
-      
-        <button onClick={props.handleShowInstructions}>Got it!</button>
+
+        <button
+          className="btn"
+          onClick={props.handleShowInstructions}>Got it!</button>
     </div>
   </div>
   );

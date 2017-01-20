@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import '../style/App.css';
 
@@ -200,13 +201,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.showInstructions
-          ? <Instructions handleShowInstructions={this.handleShowInstructions}/>
-          : null}
+        <ReactCSSTransitionGroup
+          transitionName="instructions-transition"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}>
+            {this.state.showInstructions
+            ? <Instructions handleShowInstructions={this.handleShowInstructions}/>
+            : null}
+          </ReactCSSTransitionGroup>
         <Header />
 
         <button
           onClick={this.handleShowInstructions}
+          className="btn show-instuctions-button"
           >Show Instructions</button>
         <ControlPanel
           gameRunning={this.state.gameRunning}

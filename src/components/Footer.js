@@ -5,8 +5,8 @@ import React from 'react';
 function Footer() {
   return (
     <div className="App-footer">
-      <p><small>Created by Jay</small></p>
-    <p><small>Visit me on <a target="_blank"
+      <p><small>Created by Jay<br/>
+        Visit me on <a target="_blank"
         href="https://github.com/libeja">GitHub </a><a
           target="_blank"
           href="https://github.com/libeja"><i

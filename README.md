@@ -7,7 +7,6 @@ More information regarding the game can be found at the [Game of Life Wikipedia 
 
 ##### Rules of the game:
 
-
 ##### The following user stories needed to be fulfilled:
 1. User Story: When I first arrive at the game, it will randomly generate a board and start playing.
 2. User Story: I can start and stop the board.
@@ -37,3 +36,4 @@ The user is able to click on individual cells or click and drag over the board t
 * Learned that setState takes a second argument, a callback that is called once the state is updated. This helped solve a problem of not having the use of the the updated state within the same function.
 * Learned how to create click-and-drag functionality by combining the mouseOver event with a global mouseDown flag (set on the state object)
 * Reinforced the idea of not mutating the state and made use of the ES6 spread operator [...] in order to copy an array for mutation.
+* How to use CSS animations with React by using the ReactCSSTransitionGroup API

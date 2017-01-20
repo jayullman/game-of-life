@@ -1,30 +1,33 @@
-
 .App {
   text-align: center;
-  /*min-width: 300px;
-  max-width: 700px;*/
   margin: 0 auto;
+  background: #fff;
 }
 
-.App-header a:link, .App-header a:visited,
+/*.App-header a:link, .App-header a:visited,
 .App-header a:hover, .App-header a:active {
-	color: rgb(190, 246, 250);
+	color: rgb(0, 60, 60);
 }
 
 .App-footer a:link, .App-footer a:visited,
 .App-footer a:hover, .App-footer a:active {
-	color: rgb(190, 246, 250);;
+	color: rgb(0, 60, 60);
+}*/
+
+p {
+  margin-top: 0;
+  padding: 0 10px;
 }
 
  a:link, a:visited,
  a:hover, a:active {
-	text-decoration: none;
-  color: #000;
+
+  color: #8CE6F0;
 }
 
 .App-header {
-  margin: 0 auto 35px auto;
-  background-color: #fff;
+  margin: 0 auto 20px auto;
+  background-color: #333;
   height: 80px;
   padding: 10px;
   color: #444;
@@ -35,17 +38,17 @@
 
 .App-header h1 {
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: 'Press Start 2P', cursive;
   font-size: 2em;
+  color: #C88CF0;
 }
 
 .App-footer {
-  margin: 35px auto;
-  background-color: #fff;
-  height: 40px;
+  margin: 35px auto 20px auto;
+  background-color: #333;
   padding: 10px;
-  color: #44;
+  color: #C88CF0;
   min-width: 300px;
   max-width: 700px;
   box-shadow: 0px -10px 10px -5px rgb(120, 120, 120);
@@ -56,10 +59,10 @@
   font-weight: 100;
 }
 
-.project-title {
+/*.project-title {
   font-size: 1.2em;
   font-weight: 100;
-}
+}*/
 
 
 .subtitle {
@@ -70,13 +73,13 @@
 
 .github {
   text-align: center;
-  font-weight: 100;
-
+  color: #fff;
 }
 
 .board {
   margin: 20px auto;
   white-space: nowrap;
+  overflow: auto;
 }
 
 .cell {
@@ -119,10 +122,9 @@
   border-radius: 10px;
   font-family: 'Orbitron', sans-serif;
   font-size: .8em;
-  color: rgb(220, 40, 40);
+  color: #8CE6F0;
   background-color: #000;
   display: inline-block;
-  /*overflow: hidden;*/
 }
 
 .generation-counter-label {
@@ -131,18 +133,70 @@
   vertical-align: middle;
 }
 
-/*.instructions {
-  z-index: 10;
-  position: absolute;
-  height: 100vh;
-  width: 75%;
-  max-width: 300px;
 
-}*/
+
+.control-panel {
+  margin-top: 15px;
+  font-size: .7em;
+}
+
+.legend {
+  text-align: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.controls {
+  padding-top: 10px;
+  vertical-align: top;
+  width: 80%;
+  max-width: 300px;
+  min-width: 220px;
+  margin: 0 auto;
+  border: 3px solid rgb(99, 99, 99);
+}
+
+.control-group {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.slider {
+  position: relative;
+  top: 3px;
+  left: 5px;
+}
+
+.select-control {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.grid-size {
+  padding-left: 10px;
+}
+
+.btn {
+  outline: 0;
+  width: 80px;
+  height: 30px;
+  background-color: #F0968C;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.show-instuctions-button {
+  width: auto;
+}
+
+/* Transition Styles for React CSS Transition Group */
 
 .instructions-mask {
   position: fixed;
-  top: 0px;
+  /*top: 0px;*/
   width: 100%;
   height: 100vh;
   z-index: 10;
@@ -167,9 +221,36 @@
   text-align: left;
 }
 
+.instructions-transition-enter {
+  opacity: 0.01;
+  top: -20px;
+
+}
+
+.instructions-transition-enter.instructions-transition-enter-active {
+  opacity: 1;
+  top: 0px;
+  transition: opacity 500ms ease-in,
+              top 500ms ease-in;
+}
+
+.instructions-transition-leave {
+  opacity: 1;
+  top: 0px;
+}
+
+.instructions-transition-leave.instructions-transition-leave-active {
+  opacity: 0.01;
+  top: -20px;
+  transition: opacity 500ms ease-in,
+              top 500ms ease-in;
+}
+
+
+
 @media (max-width: 570px) {
   .App-header {
-    height: 50px;
+    height: 80px;
   }
   .App-header h1 {
     font-size: 1.5em;
@@ -179,10 +260,11 @@
     width: 8px;
     height: 8px;
   }
+
 }
 @media (max-width: 430px) {
   .App-header h1 {
-    font-size: 1em;
+    font-size: 1.2em;
   }
   .cell {
     width: 5px;
@@ -190,5 +272,13 @@
   }
   .instructions {
     font-size: .8em;
+  }
+}
+
+@media (min-width: 570px) {
+  .controls {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
