@@ -1,7 +1,7 @@
 # Conway's Game of Life
 _____
 ## About
-This is a project created for freeCodeCamp's React/Data visualizatioin certificate. 
+This is a project created for freeCodeCamp's React/Data visualization certificate. 
 
 More information regarding the game can be found at the [Game of Life Wikipedia page](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
 
