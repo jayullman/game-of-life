@@ -1,7 +1,7 @@
 # Conway's Game of Life
 _____
 ## About
-This is a project created for freeCodeCamp's React/Data visualization certificate. 
+This is a project created for freeCodeCamp's React/Data visualization certificate.
 
 More information regarding the game can be found at the [Game of Life Wikipedia page](https://en.wikipedia.org/wiki/Conway's_Game_of_Life)
 
@@ -19,7 +19,7 @@ More information regarding the game can be found at the [Game of Life Wikipedia 
 ## Implementations/Features
 
 ### Board
-The board is represented in state as the cells property. It is a 2-dimensional board of boolean values, where false represents a dead cell, and true represents a living cell. When the board is rendered with the Board component, conditional rendering is used (via a ternary operator) to determine the style of the cell (living or dead), and whether the cell is clickable/dragable, through a passed in callback function from the App parent component. The board has been made to be responsive. The size of the cells shrink as the size of the screen/browser window decreases.
+The board is represented in state as the cells property. It is a 2-dimensional board of boolean values, where false represents a dead cell, and true represents a living cell. When the board is rendered with the Board component, conditional rendering is used (via a ternary operator) to determine the style of the cell (living or dead), and whether the cell is clickable/draggable, through a passed in callback function from the App parent component. The board has been made to be responsive. The size of the cells shrink as the size of the screen/browser window decreases.
 
 ### Game Speed
 Game speed was determined by stetting the value of the second argument to setTimeout, which was kept as a list of constants in a module.
