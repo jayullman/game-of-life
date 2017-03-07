@@ -1,4 +1,6 @@
 # Conway's Game of Life
+
+live site: https://libeja.github.io/game-of-life/
 _____
 ## About
 This is a project created for freeCodeCamp's React/Data visualization certificate.
